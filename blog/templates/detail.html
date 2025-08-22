@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+
+    <h1>{{ post.title }}</h1>
+    <div class="post-body">
+        {{ post.body }}
+    </div>
+    <div class="post-special-info">
+        {{ post.author.username }}
+    </div>
+    <div class="post-special-info"> 
+        {{ post.published_at }}
+    </div>
+    <div>
+        <a href="{% url 'blog:post_list' %}">Назад к списку постов</a>
+    </div>
+
+{% endblock %}
