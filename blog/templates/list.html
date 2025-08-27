@@ -3,6 +3,15 @@
 {% block title %}Список постов блога{% endblock %}
 
 {% block content %}
+    {% if user.is_authenticated %}
+        <hr>
+        <div>Привет, {{ user.first_name }} {{ user.last_name }}</div>
+        <form method="post" action="{% url "accounts:logout_view" %}">
+        {% csrf_token %}
+        <button type="submit">Выйти</button>
+        </form>
+        <hr>
+    {% endif %}
     {% for post in posts %}
         {#    <a href="{% url 'blog:post_detail' post.id post.slug %}"><h1>{{ post.title }}</h1></a>#}
         <a href="{{ post.get_absolute_url }}"><h1>{{ post.title }}</h1></a>
